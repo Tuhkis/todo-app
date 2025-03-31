@@ -1,0 +1,11 @@
+<div class="container content is-normal notification" x-data="{ open: false }">
+    <h1 x-text="i.title" />
+    <button class="button is-primary" x-on:click="open = !open" x-text="open ? 'Close' : 'Open'" />
+    <button class="button is-danger" x-on:click="items = items.filter((it) => {return it !== i})">Remove</button>
+    <button class="button" x-transition x-show="items.indexOf(i) != 0" x-on:click="items[items.indexOf(i)] = [items[items.indexOf(i) - 1], items[items.indexOf(i) - 1] = items[items.indexOf(i)]][0]">Up</button>
+    <button class="button" x-transition x-show="items.indexOf(i) != items.length - 1" x-on:click="items[items.indexOf(i)] = [items[items.indexOf(i) + 1], items[items.indexOf(i) + 1] = items[items.indexOf(i)]][0]">Down</button>
+
+    <ul x-show="open" x-transition>
+        <p x-text="i.text" />
+    </ul>
+</div>
